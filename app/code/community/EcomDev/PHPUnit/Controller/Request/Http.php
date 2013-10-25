@@ -374,6 +374,12 @@ class EcomDev_PHPUnit_Controller_Request_Http
      */
     public function getBaseUrl()
     {
+        if (empty($this->_baseUrl))
+        {
+            $this->setBaseUrl(
+                Mage::getStoreConfig(EcomDev_PHPUnit_Model_Config::XML_PATH_UNSECURE_BASE_URL)
+            );
+        }
         return $this->_baseUrl;
     }
 
